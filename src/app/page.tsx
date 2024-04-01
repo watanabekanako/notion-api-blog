@@ -50,6 +50,12 @@ export default async function Home() {
             </Link>
           ))}
         </div>
+        <Image
+          src="https://github-contributions-api.deno.dev/watanabekanako.svg"
+          alt="GitHub Contributions"
+          width={800}
+          height={300}
+        />
       </div>
     </div>
   );
