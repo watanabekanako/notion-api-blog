@@ -10,6 +10,7 @@
     "export": "next export"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.18",
     "@notionhq/client": "^1.0.4",
     "next": "14.1.4",
     "notion-to-md": "^3.1.1",
