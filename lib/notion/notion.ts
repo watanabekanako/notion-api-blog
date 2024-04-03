@@ -17,11 +17,12 @@ export async function getAllPosts(): Promise<NotionPost[]> {
     database_id: process.env.DATABASE_ID,
     sorts: [
       {
-        //createdateカラムの値で降順に並べる
         property: "createdate",
         direction: "descending",
       },
     ],
+    page_size: 2,
+    start_cursor: undefined,
   });
   const posts = response.results;
   const postsProperties = posts.map((post: any) => {
