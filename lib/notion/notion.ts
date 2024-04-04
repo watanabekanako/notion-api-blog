@@ -10,6 +10,7 @@ interface NotionPost {
   types: string[];
   files: string[];
   author: string;
+  category: string;
 }
 
 export async function getAllPosts(): Promise<NotionPost[]> {
@@ -21,7 +22,7 @@ export async function getAllPosts(): Promise<NotionPost[]> {
         direction: "descending",
       },
     ],
-    page_size: 2,
+    page_size: 6,
     start_cursor: undefined,
   });
   const posts = response.results;
@@ -45,9 +46,10 @@ export async function getAllPosts(): Promise<NotionPost[]> {
 
     // peopleプロパティの取り出し（例：author）
     // const author = post.properties.author.select.name;
+    const category = post.properties.category?.multi_select[0]?.name || "";
 
     // プロパティをまとめたオブジェクトを返す
-    return { id, title, types, files };
+    return { id, title, types, files, category };
   });
   return postsProperties;
 }
@@ -55,6 +57,7 @@ interface NotionPostInfo {
   title: string;
   date: string;
   author: string;
+  category: any;
 }
 
 export async function getPageInfo(pageId: string): Promise<any> {
